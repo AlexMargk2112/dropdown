@@ -1,11 +1,12 @@
 <template>
-	<div :class="['drop-item', rootClasses]" @click="onSelect" v-if='isInSearchTerm'>
+	<div :class="['drop-item', rootClasses]" @click="onSelect" v-if='isInSearchTerm' ref="el">
     {{ label }} - {{ subtext }}
   </div>
 </template>
 <script lang="ts" setup>
-import { inject, onMounted, computed } from 'vue';
+import { inject, onMounted, computed, ref, watch } from 'vue';
   
+const el = ref<HTMLElement>();
 const options = inject('options')
 
 const props = defineProps({
@@ -25,10 +26,21 @@ const props = defineProps({
 const onSelect = () => {
   options.selectOpton(props.value);
 }
+const isHightlighted = computed(() => {
+  if(!options.highLighted.value) return false;
+  return  props.value === options.highLighted.value;
+})
 const rootClasses = computed(() => {
   return {
-    'drop-item--selected': options.selectedValue.value === props.value
+    'drop-item--selected': options.selectedValue.value === props.value,
+    'drop-item--focused': isHightlighted.value
   }
+})
+
+watch(isHightlighted, (val) => {
+    if(val) {
+        el.value?.scrollIntoView({ block: 'nearest', inline: 'start' })
+    }
 })
 
 const isInSearchTerm = computed(() => {
@@ -45,7 +57,7 @@ onMounted(() => {
     color: rgb(24, 23, 23);
   }
   .drop-item--focused {
-    background: indigo;
+    background: indigo !important;
     color: white;
   }
   .drop-item:hover {

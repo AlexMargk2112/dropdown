@@ -9,5 +9,7 @@ import DropdownItem from './components/DropdownItem.vue';
     <DropdownItem value="ac" label="ACD" subtext="Dummy as fuck two times"/>
     <DropdownItem value="dc" label="FDL" subtext="Dummy as fuck three times"/>
     <DropdownItem value="lc" label="LCL" subtext="WTF"/>
+    <DropdownItem value="lk" label="lKL" subtext="WTF 2"/>
+    <DropdownItem value="clk" label="ClK" subtext="Dummy"/>
   </Dropdown>
 </template>
