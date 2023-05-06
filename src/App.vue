@@ -1,30 +1,13 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import Dropdown from './components/Dropdown.vue';
+import DropdownItem from './components/DropdownItem.vue';
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <Dropdown>
+  	<DropdownItem value="ab" label="ABC" subtext="Dummy as fuck"/>
+    <DropdownItem value="ac" label="ACD" subtext="Dummy as fuck two times"/>
+    <DropdownItem value="dc" label="FDL" subtext="Dummy as fuck three times"/>
+    <DropdownItem value="lc" label="LCL" subtext="WTF"/>
+  </Dropdown>
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
